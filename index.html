@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>To Do List</h1>
+    </header>
+
+<!-- Tasks list-->
+    <section id="professional_section">
+    <h2>Professional list</h2>
+    <button class="display-popup-btn">Add task</button>
+    <ul id="todolist-professionnal"></ul>
+    </section>
+    
+    <section id="personnal_section">
+      <h2>Personnal list</h2>
+      <button class="display-popup-btn">Add task</button>
+      <ul id="todolist-personnal"></ul>
+    </section>
+    
+<!-- POPUP FORM CREATION-->
+    <section class="popup">
+      <button type="button" id="close-btn"></button>
+      <h2>New task</h2>
+      <form class="task-form">
+        <div id="name-field" class="field">
+          <label for="task-name">Task name :</label><br />
+          <input type="text" name="task-name" id="task-name" required />
+        </div>
+        <div id="description-field" class="field">
+          <label for="task-description">Task description :</label><br />
+          <textarea
+            name="task-description"
+            id="task-description"
+            rows="4"
+            placeholder="Write a description here"
+          ></textarea>
+        </div>
+        <div id="date-field" class="field">
+          <label for="task-due-date">Due Date :</label>
+          <input type="date" name="task-due-date" id="task-due-date" />
+        </div>
+        <div id="task-type">
+          <input
+            type="radio"
+            name="task-type"
+            id="pro-task"
+            value="professional"
+            checked="checked"
+          />
+          <label for="pro-task">Professional</label>
+          <input
+            type="radio"
+            name="task-type"
+            id="perso-task"
+            value="personnal"
+          />
+          <label for="perso-task">Personnal</label>
+        </div>
+        <div id="button-field">
+          <button type="submit" id="submit-btn">Add task</button>
+        </div>
+      </form>
+    </section>
+  </body>
+  <script src="./app.js"></script>
+</html>

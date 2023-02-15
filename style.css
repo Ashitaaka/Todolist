@@ -1,0 +1,332 @@
+/* @Fontface */
+@font-face {
+    font-family: TTFirs;
+    src: url('./fonts/TTFirsNeue-Light.otf') format('opentype');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: TTFirs;
+    src: url('./fonts/TTFirsNeue-Regular.otf') format('opentype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: TTFirs;
+    src: url('./fonts/TTFirsNeue-DemiBold.otf') format('opentype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Continua;
+    src: url('./fonts/Continua-Regular.otf') format('opentype');
+}
+
+/* Color variables */
+:root{
+    --main-text-color : #332624;
+    --color-light-green : #8C8970;
+    --color-dark-green : #636150;
+    --color-light-red : #C78476;
+    --color-dark-red : #966459;
+    --color-light-beige : #ebdfd3;
+    --color-dark-beige : #cfbaab;
+}
+
+
+/* General styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'TTFirs', sans-serif;
+    font-weight: 100;
+    font-size: 16px;
+    color: var(--main-text-color);
+    height: 100vh;
+}
+
+header{
+    background-color: var(--color-light-green);
+}
+
+h1{
+    font-family: 'continua', serif;
+    font-size: 6em;
+    font-weight: normal;
+    text-align: center;
+}
+
+h2{
+    font-family: 'TTFirs', sans-serif;
+    font-size: 1.4em;
+    font-weight: 100;
+    letter-spacing: 0.3em;
+    text-align: center;
+    padding-bottom: 1.1em;
+}
+
+button{
+    font-family: 'TTFirs', sans-serif;
+    font-size: 1em;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    border: none;
+    background-color: var(--main-text-color);
+    color: var(--color-light-beige);
+    padding: 0.5em 3em;
+    border-radius: 1.5em;
+}
+
+/* Buttons to open the form */
+.display-popup-btn{
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.display-popup-btn:hover{
+    background-color: var(--color-dark-beige);
+    color: var(--main-text-color);
+}
+
+/* Task list */
+ul{
+    padding-top: 2em;
+    width: 100%;
+    max-width: 1024px;
+}
+
+li{
+    list-style-type: none;
+    border-bottom: 1px solid var(--main-text-color);
+}
+
+li:first-child{
+    border-top: 1px solid var(--main-text-color);
+}
+
+
+#professional_section{
+    background-color: var(--color-light-green);
+}
+
+#personnal_section{
+    background-color: var(--color-light-red);
+}
+
+#personnal_section, #professional_section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3.5em 0.5em;
+}
+
+/* Task Elements  */
+.task-title{
+    padding: 0.4em 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Continua', serif;
+    font-weight: normal;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+.task-title button{
+    font-size: 1rem;
+    padding: 0.5em 1em;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--main-text-color);
+    border: 1px solid var(--main-text-color);
+    margin-right: 1.5em;
+    cursor: pointer;
+    min-width: 95px;
+}
+
+.task-title .statut-btn-done{
+    border: 1px solid var(--color-dark-beige);
+    background-color: var(--color-dark-beige);
+    text-decoration: line-through;
+}
+
+.btn-expand{
+    width: 50px;
+    cursor: pointer;
+}
+
+.btn-close{
+    cursor: pointer;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    background-color: rgba(51, 38, 36, 0.25);
+    position :relative;
+    transition: transform 0.4s;
+}
+
+.btn-close:before,
+.btn-close:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 15px);
+    width: 30px;
+    height: 2px;
+    background-color: var(--color-dark-beige);
+    border-radius: 5px;
+}
+.btn-close:hover{
+    transform: rotate(90deg);
+}
+
+.btn-close:before {
+    transform: rotate(45deg);
+  }
+  
+.btn-close:after {
+      transform: rotate(-45deg);
+    }
+
+.task-txt{
+    padding: 0 0.5em 0 1em;
+    flex-grow: 1;
+}
+
+.task-description{
+    font-family: 'TTFirs', sans-serif;
+    color: var(--main-text-color);
+    padding: 0 3em 0 6em;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.date{
+    font-size: 1.1rem;
+    font-weight: 300;
+    padding-bottom: 1em;
+}
+
+.description-txt{
+    font-size: 1rem;
+    font-weight: 100;
+    padding-bottom: 2em;
+}
+
+/* ----------- PopUp design ----------- */
+
+.popup{
+    width : 450px;
+    padding: 3em 2em;
+    background-color: var(--color-light-beige);
+    position:fixed;
+    top:10%;
+    left:calc(50% - 225px );
+    transition: opacity 0.4s;
+    visibility: hidden;
+    opacity: 0;
+}
+.popup-visible{
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup h2{
+    list-style-type: none;
+    font-family: 'Continua', serif;
+    font-weight: normal;
+    font-size: 2.5em;
+}
+
+.field{
+    padding-bottom: 2em;
+}
+
+.popup input, .popup textarea{
+    width: 100%;
+    background-color: var(--color-light-beige);
+    border :none;
+    border-bottom: 1px solid var(--main-text-color);
+    padding: 0.5em 1em;
+    resize: none;
+    font-family: 'TTFirs', sans-serif;
+    font-size: 1rem;
+    font-weight: 100;
+}
+
+#button-field{
+    text-align: center;
+}
+
+.popup #submit-btn{
+    background-color: var(--color-light-beige);
+    color: var(--main-text-color);
+    border: 1px solid var(--main-text-color);
+    cursor: pointer;
+}
+
+.popup #submit-btn:hover{
+    background-color: var(--main-text-color);
+    color: var(--color-light-beige);
+}
+
+#task-type input{
+    width: auto;
+    border :none;
+    padding: 0;
+    margin-right: 0.5em;
+}
+
+#task-type{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 2em;
+}
+
+#task-type label{
+    flex-grow: 1;
+}
+
+#close-btn{
+    position: absolute;
+    padding: 0;
+    right: 20px;
+    top: 20px;
+    min-width: 25px;
+    min-height: 25px;
+    border-radius: 50%;
+    background-color:#efe7df;
+    border: 1px #efe7df solid;
+    transition : background-color 0.3s, border 0.3s;
+}
+
+#close-btn:before,
+#close-btn:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left:4px;
+    width: 15px;
+    height: 1px;
+    background-color: var(--main-text-color);
+    border-radius: 5px;
+}
+#close-btn:hover{
+    background-color:white;
+    border: 1px white solid;
+}
+
+#close-btn:before {
+    transform: rotate(45deg);
+  }
+  
+#close-btn:after {
+      transform: rotate(-45deg);
+    }
