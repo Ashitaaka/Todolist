@@ -370,7 +370,7 @@ li:first-child{
         padding: 0 0.5em;
         text-align: center;
     }
-    
+
     .popup{
         width : 80%;
         min-width: 16em;
@@ -400,13 +400,13 @@ li:first-child{
     }
 }
 
-/* ----------RESPONSIVE DESIGN MOBILE LANSCAPE VIEW ---------- */
+/* ----------RESPONSIVE DESIGN LANSCAPE VIEW ---------- */
 
-@media only screen and (orientation: landscape) {
+@media only screen and (orientation : landscape) and (max-height : 650px) {
     .popup{
         width : 90%;
         padding: 1em;
-        top:1%;
+        top:calc(50vh - 165px);
         left:calc(50% - 45%);
     }
     .task-form{
