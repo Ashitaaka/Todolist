@@ -331,7 +331,7 @@ li:first-child{
       transform: rotate(-45deg);
     }
 
-/* ----------RESPONSIVE DESIGN ---------- */
+/* ----------RESPONSIVE DESIGN MOBILE PORTRAIT VIEW ---------- */
 
 @media screen and (max-width:640px){
 
@@ -370,13 +370,13 @@ li:first-child{
         padding: 0 0.5em;
         text-align: center;
     }
-
-/* POPUP RESPONSIVE*/
+    
     .popup{
-        width : 16rem;
+        width : 80%;
+        min-width: 16em;
         padding: 2em 1em;
         top:4%;
-        left:calc(50% - 8rem);
+        left:calc(50% - 40%);
     }
     
     .popup h2{
@@ -398,4 +398,55 @@ li:first-child{
         right: 15px;
         top: 15px;
     }
+}
+
+/* ----------RESPONSIVE DESIGN MOBILE LANSCAPE VIEW ---------- */
+
+@media only screen and (orientation: landscape) {
+    .popup{
+        width : 90%;
+        padding: 1em;
+        top:1%;
+        left:calc(50% - 45%);
+    }
+    .task-form{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .task-form :nth-child(1){order:1;}
+    .task-form :nth-child(2){order:3;}
+    .task-form :nth-child(3){order:2;}
+    .task-form :nth-child(4){order:4;}
+    .task-form :nth-child(5){order:5;}
+
+    #name-field, #date-field, #task-type, #button-field{
+        width:50%;
+        padding-right: 0.5em ;
+    }
+    #description-field{
+        width: 100%;
+    }
+    .popup h2{
+        font-size: 1.8em;
+        padding-bottom: 0.5em;
+    }
+    
+    .field{
+        padding-bottom: 1em;
+    }
+    
+    .popup input, .popup textarea{
+        padding: 0.5em 0.5em;
+    }
+    #task-due-date{
+        padding:0.44em 0.5em;
+    }
+    #task-type{
+        padding-bottom: 1em;
+    }
+    #task-type :nth-child(1){order:1;}
+    #task-type :nth-child(2){order:2;}
+    #task-type :nth-child(3){order:3;}
+    #task-type :nth-child(4){order:4;}
 }
