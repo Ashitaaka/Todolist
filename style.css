@@ -223,12 +223,12 @@ li:first-child{
 /* ----------- PopUp design ----------- */
 
 .popup{
-    width : 450px;
+    width : 26rem;
     padding: 3em 2em;
     background-color: var(--color-light-beige);
     position:fixed;
-    top:10%;
-    left:calc(50% - 225px );
+    top:5%;
+    left:calc(50% - 13rem);
     transition: opacity 0.4s;
     visibility: hidden;
     opacity: 0;
@@ -330,3 +330,45 @@ li:first-child{
 #close-btn:after {
       transform: rotate(-45deg);
     }
+
+/* ----------RESPONSIVE DESIGN ---------- */
+
+@media screen and (max-width:640px){
+
+    header{
+        padding: 1em 0 0 0;
+    }
+    h1{
+        font-size: 4em;
+    }
+
+    h2{
+        letter-spacing: 0.2em;
+    }
+    #professional_section #personnal_section{
+        padding: 2em 0.5em 3em 0.5em;
+    }
+    .task-title{
+        padding: 0.4em 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+    }
+    .btn-expand{
+        display: none;
+    }
+    .task-title button{
+        min-width: 95px;
+    }
+    .task-txt{
+        text-align: center;
+        padding: 0 0.5em 0.5em 0;
+        width: 100%;    
+    }
+    .task-description{
+        padding: 0 0.5em;
+        text-align: center;
+    }
+
+}
