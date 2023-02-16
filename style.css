@@ -371,4 +371,31 @@ li:first-child{
         text-align: center;
     }
 
+/* POPUP RESPONSIVE*/
+    .popup{
+        width : 16rem;
+        padding: 2em 1em;
+        top:4%;
+        left:calc(50% - 8rem);
+    }
+    
+    .popup h2{
+        font-size: 1.8em;
+        padding-bottom: 0.5em;
+    }
+    
+    .field{
+        padding-bottom: 1em;
+    }
+    
+    .popup input, .popup textarea{
+        padding: 0.5em 0.5em;
+    }
+    #task-type{
+        padding-bottom: 1em;
+    }
+    #close-btn{
+        right: 15px;
+        top: 15px;
+    }
 }
