@@ -424,14 +424,16 @@ li:first-child{
         width:50%;
         padding-right: 0.5em ;
     }
+
     #description-field{
         width: 100%;
     }
+
     .popup h2{
         font-size: 1.8em;
         padding-bottom: 0.5em;
     }
-    
+
     .field{
         padding-bottom: 1em;
     }
@@ -449,4 +451,12 @@ li:first-child{
     #task-type :nth-child(2){order:2;}
     #task-type :nth-child(3){order:3;}
     #task-type :nth-child(4){order:4;}
+}
+
+/* ----------RESPONSIVE DESIGN LANSCAPE VIEW FIOR SMALL SCREENS---------- */
+
+@media only screen and (orientation : landscape) and (max-height : 380px) {
+    #description-field textarea{
+        line-height: 0.85em;
+    }
 }
