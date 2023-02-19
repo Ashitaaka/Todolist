@@ -12,23 +12,26 @@ const displayPopupBtn = document.querySelectorAll('.display-popup-btn');
 const closePopuBtn = document.querySelector('#close-btn');
 const popup = document.querySelector('.popup');
 
+
 //Listeners--------------------------
 
 document.addEventListener('DOMContentLoaded', loadLocalStorage)
+document.addEventListener('DOMContentLoaded', dragEventListeners)
+
 toDoSubmitButton.addEventListener('submit', addToDo);
 proListContainer.addEventListener('click', deleteCheckExpand);
 persoListContainer.addEventListener('click', deleteCheckExpand);
+
 closePopuBtn.addEventListener('click', displayHidePopup);
-displayPopupBtn.forEach(function(btn){
+displayPopupBtn.forEach(btn => {
     btn.addEventListener('click', displayHidePopup);
     btn.addEventListener('click', taskType);
 });
-// document.querySelector('input[name="task-type"]').addEventListener('change', function(){
-//     console.log('yeah');
-// });
 
 
 //FUNCTIONS--------------------------
+
+//Fuction to auto check the radio button depending on the selected category (pro or personnal)
 function taskType(e){
     let taskTypeSelected = e.target.nextElementSibling.id;
     const PersoRadioButton = document.getElementById('perso-task');
@@ -53,21 +56,26 @@ function addToDo(event){
     //task li creation
     const toDoInputType = document.querySelector('input[name="task-type"]:checked').value;
     const toDoLi = document.createElement('li');
-    toDoLi.classList.add('todo')
+    toDoLi.classList.add('todo');
     if(toDoInputType === 'professional'){
         proListContainer.appendChild(toDoLi);
     }else if(toDoInputType === 'personnal'){
         persoListContainer.appendChild(toDoLi);
     }
+    //draggable div
+    const draggableDiv = document.createElement('div');
+    draggableDiv.classList.add('draggable');
+    draggableDiv.setAttribute('draggable', true);
+    toDoLi.appendChild(draggableDiv);
+    
     //title div creation
     const divTitle = document.createElement('div');
     divTitle.classList.add('task-title');
-    toDoLi.appendChild(divTitle);
-    //expand btn creation
-    const expandBtn = document.createElement('img');
-    expandBtn.src="images/task-expand-btn.png";
-    expandBtn.classList.add("btn-expand");
-    divTitle.appendChild(expandBtn);
+    draggableDiv.appendChild(divTitle);
+    //Drag btn creation
+    const dragButton = document.createElement('span');
+    dragButton.classList.add("drag-btn");
+    divTitle.appendChild(dragButton);
     //Title P creation
     const taskTitleP = document.createElement('p');
     taskTitleP.innerText = toDoInputName.value;
@@ -82,10 +90,11 @@ function addToDo(event){
     const closeBtn = document.createElement('div');
     closeBtn.classList.add('btn-close');
     divTitle.appendChild(closeBtn);
+    
     //description div creation
     const divDescription = document.createElement('div');
     divDescription.classList.add('task-description');
-    toDoLi.appendChild(divDescription);
+    draggableDiv.appendChild(divDescription);
     //Due Date P creation
     if(toDoInputDate.value.length !== 0){
         const dueDateP = document.createElement('p');
@@ -122,6 +131,38 @@ function addToDo(event){
     displayHidePopup();
 }
 
+//FUNCTIONS DRAG
+function dragStart(){
+
+}
+function dragOver(){
+
+}
+function dragEnter(){
+    this.classList.add('drag-over');
+}
+function dragLeave(){
+    this.classList.remove('drag-over');
+}
+function dragDrop(){
+
+}
+
+//FUNCTION DRAG LISTENERS
+function dragEventListeners() {
+    const draggableDiv = document.querySelectorAll('.draggable');
+    const draggableListItems = document.querySelectorAll('.todo');
+    
+    draggableDiv.forEach(draggable => {
+        draggable.addEventListener('dragstart', dragStart)
+    })
+    draggableListItems.forEach(item => {
+        item.addEventListener('dragover', dragOver);
+        item.addEventListener('dragenter', dragEnter);
+        item.addEventListener('dragleave', dragLeave);
+        item.addEventListener('drop', dragDrop);
+    })
+}
 
 //FUNCTION DELETE / CHECK / EXPAND
 function deleteCheckExpand(event){
@@ -130,7 +171,7 @@ function deleteCheckExpand(event){
     //Delete a task
     if(item.classList.contains('btn-close')){
         const task = item.parentElement;
-        let elementToRemove = task.parentElement;
+        let elementToRemove = task.parentNode.parentNode;
         elementToRemove.remove();
         removeFromLocalStorage(task);
     }
@@ -210,15 +251,21 @@ function loadLocalStorage(){
         }else if(toDoInputType === 'personnal'){
             persoListContainer.appendChild(toDoLi);
         }
+
+        //draggable div
+        const draggableDiv = document.createElement('div');
+        draggableDiv.classList.add('draggable');
+        draggableDiv.setAttribute('draggable', true);
+        toDoLi.appendChild(draggableDiv);
+
         //title div creation
         const divTitle = document.createElement('div');
         divTitle.classList.add('task-title');
-        toDoLi.appendChild(divTitle);
-        //expand btn creation
-        const expandBtn = document.createElement('img');
-        expandBtn.src="images/task-expand-btn.png";
-        expandBtn.classList.add("btn-expand");
-        divTitle.appendChild(expandBtn);
+        draggableDiv.appendChild(divTitle);
+       //Drag btn creation
+        const dragButton = document.createElement('span');
+        dragButton.classList.add("drag-btn");
+        divTitle.appendChild(dragButton);
         //Title P creation
         const taskTitleP = document.createElement('p');
         taskTitleP.innerText = todo.title;
@@ -240,7 +287,7 @@ function loadLocalStorage(){
         //description div creation
         const divDescription = document.createElement('div');
         divDescription.classList.add('task-description');
-        toDoLi.appendChild(divDescription);
+        draggableDiv.appendChild(divDescription);
        //Due Date P creation
         if(todo.date.length !== 0){
             const dueDateP = document.createElement('p');
