@@ -18,13 +18,13 @@
     <section id="professional_section">
     <h2>Professional list</h2>
     <button class="display-popup-btn">Add task</button>
-    <ul id="todolist-professionnal"></ul>
+    <div id="todolist-professionnal"></div>
     </section>
     
     <section id="personnal_section">
       <h2>Personnal list</h2>
       <button class="display-popup-btn">Add task</button>
-      <ul id="todolist-personnal"></ul>
+      <div id="todolist-personnal"></div>
     </section>
     
 <!-- POPUP FORM CREATION-->
@@ -65,7 +65,9 @@
             value="personnal"
           />
           <label for="perso-task">Personnal</label>
+          <input id="toDoId" name="toDoId" type="hidden" value="-1">
         </div>
+       
         <div id="button-field">
           <button type="submit" id="submit-btn">Add task</button>
         </div>

@@ -93,21 +93,24 @@ button{
 }
 
 /* Task list */
-ul{
+#todolist-personnal, #todolist-professionnal{
     padding-top: 2em;
     width: 100%;
     max-width: 1024px;
 }
-
-li{
-    list-style-type: none;
+.todo{
     border-bottom: 1px solid var(--main-text-color);
+    transition: all 0.3s;
 }
 
-li:first-child{
+.todo:first-child{
     border-top: 1px solid var(--main-text-color);
 }
 
+.todo:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.015);
+}
 
 #professional_section{
     background-color: var(--color-light-green);
@@ -156,9 +159,63 @@ li:first-child{
     text-decoration: line-through;
 }
 
-.btn-expand{
-    width: 50px;
+/* .drag-btn{
+    width: 40px;
     cursor: pointer;
+    position: relative;
+}
+
+.drag-btn:before,
+.drag-btn:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left:0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--main-text-color);
+    border-radius: 20px;
+}
+
+.drag-btn:before {
+    transform: translateY(-5px);
+  }
+  
+.drag-btn:after {
+      transform: translateY(5px);
+    }
+.drag-over{
+    background-color:rgba(255, 255, 255, 0.3);
+} */
+
+.expand-btn{
+    cursor: pointer;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    border: 1px solid var(--main-text-color);
+    position :relative;
+    transition: all 0.4s;
+}
+
+.expand-btn:before, 
+.expand-btn:after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 1px);
+    left:calc(50% - 15px);
+    width: 30px;
+    height: 2px;
+    background-color: var(--main-text-color);
+    border-radius: 5px;
+}
+
+.expand-btn:after {
+    transform: rotate(90deg);
+  }
+
+.expand-btn:hover{
+    transform: rotate(90deg);
 }
 
 .btn-close{
@@ -182,6 +239,7 @@ li:first-child{
     background-color: var(--color-dark-beige);
     border-radius: 5px;
 }
+
 .btn-close:hover{
     transform: rotate(90deg);
 }
@@ -202,7 +260,7 @@ li:first-child{
 .task-description{
     font-family: 'TTFirs', sans-serif;
     color: var(--main-text-color);
-    padding: 0 3em 0 6em;
+    padding: 0 3em 0 5em;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-in-out;
@@ -217,8 +275,28 @@ li:first-child{
 .description-txt{
     font-size: 1rem;
     font-weight: 100;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
 }
+
+/*Button to modify a task*/
+.modify-btn{
+    cursor: pointer;
+    color: var(--main-text-color);
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0 0 2em 0;
+    border: none;
+    border-radius: 0;
+    font-weight: 300;
+    letter-spacing: 0;
+    font-style: oblique;
+    text-decoration: underline;
+    transition: all 0.25s;
+
+}
+.modify-btn:hover{
+    transform: translateX(7px);
+}
+
 
 /* ----------- PopUp design ----------- */
 
@@ -355,8 +433,13 @@ li:first-child{
         align-items: center;
         font-size: 2rem;
     }
-    .btn-expand{
+    .expand-btn{
         display: none;
+    }
+    .modify-btn:hover{
+        /* transform: translateX(0px); */
+        transform: translateY(5px);
+
     }
     .task-title button{
         min-width: 95px;
