@@ -132,7 +132,7 @@ function addToDo(){
     }
     //modify btn creation
     const modifyBtn = document.createElement('button');
-    modifyBtn.innerText = "modify this Task";
+    modifyBtn.innerText = "Modify this task";
     modifyBtn.classList.add('modify-btn');
     divDescription.appendChild(modifyBtn);
 
@@ -225,7 +225,7 @@ function modifyToDo(){
     }
     //modify btn creation
     const modifyBtn = document.createElement('button');
-    modifyBtn.innerText = "modify this Task";
+    modifyBtn.innerText = "Modify this task";
     modifyBtn.classList.add('modify-btn');
     divDescription.appendChild(modifyBtn);
 
@@ -408,7 +408,7 @@ function loadLocalStorage(){
         //modify btn creation
         const modifyBtn = document.createElement('button');
         modifyBtn.classList.add('modify-btn');
-        modifyBtn.innerText = "modify this Task";
+        modifyBtn.innerText = "Modify this task";
         divDescription.appendChild(modifyBtn);
     })
 }
