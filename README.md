@@ -5,4 +5,6 @@ Langages : Javascript / CSS / HTML <br>
 The challenges here were to use differents Javascript methods, to store and load to/from the Local storage and to make small animations on hover.<br>
 Feel free to use it. All the tasks that you add to this To Do List, will only be available on you computer, as everything is stored in the local storage.
 
+Live site : https://ashitaaka.github.io/Todolist/ <br>
+link to a short video presenting this project : https://t.ly/CSAP <br>
 Design & development : ©Ashitaaka - 2023
